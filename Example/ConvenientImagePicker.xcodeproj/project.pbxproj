@@ -12,7 +12,6 @@
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
-		BE0A71D8235C41E400D31E9D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE0A71D7235C41E300D31E9D /* Images.xcassets */; };
 		BE0A71D9235C422400D31E9D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		EA121598773B0181EA27E971 /* Pods_ConvenientImagePicker_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31588F45CB2BD57D12AD50BD /* Pods_ConvenientImagePicker_Tests.framework */; };
 		F43F0AA057E13611BB23C2CC /* Pods_ConvenientImagePicker_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1983BE5801BAC4F6593DCF5A /* Pods_ConvenientImagePicker_Example.framework */; };
@@ -44,10 +43,8 @@
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		6176032ED32EA54D2CE1D31D /* Pods-ConvenientImagePicker_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConvenientImagePicker_Tests.debug.xcconfig"; path = "Target Support Files/Pods-ConvenientImagePicker_Tests/Pods-ConvenientImagePicker_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		8F69EF4C31F64866474500C1 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		9BCE2BC66D2E26E95F455BA5 /* ConvenientImagePicker.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = ConvenientImagePicker.podspec; path = ../ConvenientImagePicker.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		ABD85077A638FB97B01F90C2 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		BE0A71D7235C41E300D31E9D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ../ConvenientImagePicker/Assets/Images.xcassets; sourceTree = "<group>"; };
 		F1A60F5AE608FA3944C072EB /* Pods-ConvenientImagePicker_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConvenientImagePicker_Tests.release.xcconfig"; path = "Target Support Files/Pods-ConvenientImagePicker_Tests/Pods-ConvenientImagePicker_Tests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -83,7 +80,6 @@
 		607FACC71AFB9204008FA782 = {
 			isa = PBXGroup;
 			children = (
-				BE0A71D7235C41E300D31E9D /* Images.xcassets */,
 				607FACF51AFB993E008FA782 /* Podspec Metadata */,
 				607FACD21AFB9204008FA782 /* Example for ConvenientImagePicker */,
 				607FACE81AFB9204008FA782 /* Tests */,
@@ -146,7 +142,6 @@
 			children = (
 				9BCE2BC66D2E26E95F455BA5 /* ConvenientImagePicker.podspec */,
 				ABD85077A638FB97B01F90C2 /* README.md */,
-				8F69EF4C31F64866474500C1 /* LICENSE */,
 			);
 			name = "Podspec Metadata";
 			sourceTree = "<group>";
@@ -253,7 +248,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BE0A71D9235C422400D31E9D /* Images.xcassets in Resources */,
-				BE0A71D8235C41E400D31E9D /* Images.xcassets in Resources */,
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 			);

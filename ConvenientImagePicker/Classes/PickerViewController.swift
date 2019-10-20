@@ -23,7 +23,7 @@ let statusBarHeight = UIApplication.shared.statusBarFrame.height
 
 public class PickerViewController: UIViewController {
     
-    public weak var imagePickerDelegate: ConvenientImagePickerDelegate?
+    public weak var delegate: ConvenientImagePickerDelegate?
     
     internal var _selectedImageCount = 0
     public var selectedImageCount: Int { get{ return _selectedImageCount} }
@@ -96,16 +96,16 @@ public class PickerViewController: UIViewController {
         return label
     }()
     public let doneButton = { () -> UIButton in
-        let button = UIButton(type: UIButtonType.system)
+        let button = UIButton(type: .system)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
         button.titleLabel?.textAlignment = .right
         button.frame = CGRect(x: screenWidth - 75, y: 0, width: 60, height: 60)
-        button.setTitle("Done", for: UIControlState.normal)
+        button.setTitle("Done", for: .normal)
         return button
     }()
     
     public let titleViewEffectView = { () -> UIVisualEffectView in
-        let blur = UIBlurEffect(style: UIBlurEffectStyle.extraLight)
+        let blur = UIBlurEffect(style: .extraLight)
         let effectview = UIVisualEffectView(effect: blur)
         effectview.frame = CGRect(x: 0, y: 0, width: screenWidth, height: 60)
         return effectview
@@ -212,7 +212,7 @@ public class PickerViewController: UIViewController {
             self.mainView.frame = CGRect(x: 0, y: screenHeight, width: screenWidth, height: screenHeight + 50.0)
             self.backView.alpha = 0
         }) { (true) in
-            self.imagePickerDelegate?.imagePickerDidCancel(self.selectedImages)
+            self.delegate?.imagePickerDidCancel(self.selectedImages)
             self.dismiss(animated: true, completion: nil)
         }
     }

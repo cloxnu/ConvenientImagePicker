@@ -25,9 +25,14 @@ class PickerCollectionCell: UICollectionViewCell {
 //
 //        let selectedImage = UIImage(named: "SelectedImage", in: bundle, compatibleWith: traitCollection) ?? UIImage()
         
-        let bundlePath = Bundle.init(for: self.classForCoder).resourcePath?.appending("ConvenientImagePicker.bundle")
-        let resource = Bundle.init(path: bundlePath!)
-        let selectedImage = UIImage(named: "SelectedImage.png", in: resource, compatibleWith: nil)
+//        let bundlePath = Bundle.init(for: self.classForCoder).resourcePath?.appending("ConvenientImagePicker.bundle")
+//        let resource = Bundle.init(path: bundlePath!)
+//        let selectedImage = UIImage(named: "SelectedImage", in: resource, compatibleWith: nil)
+        
+        let bundle = Bundle.init(for: self.classForCoder)
+        let url = bundle.url(forResource: "ConvenientImagePicker", withExtension: "bundle")
+        let targetBundle = Bundle.init(url: url!)
+        let selectedImage = UIImage.init(named: "SelectedImage", in: targetBundle, compatibleWith: nil)
         
 //        let currentBundle = Bundle(for: type(of: self))
 //        let bundleName = (currentBundle.infoDictionary? ["CFBundleName"] as! NSString).appending(".bundle")

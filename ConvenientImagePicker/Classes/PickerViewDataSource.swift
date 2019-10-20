@@ -36,7 +36,7 @@ extension PickerViewController: UICollectionViewDelegateFlowLayout, UICollection
     public func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
         if self.selectedImageCount >= self.maxNumberOfSelectedImage
         {
-            self.imagePickerDelegate?.imageSelectMax(self, wangToSelectIndex: indexPath.item, wangToSelectImage: self.GetImageFromIndex(item: indexPath.item))
+            self.delegate?.imageSelectMax(self, wangToSelectIndex: indexPath.item, wangToSelectImage: self.GetImageFromIndex(item: indexPath.item))
             return false
         }
         return true
@@ -176,7 +176,7 @@ extension PickerViewController: UICollectionViewDelegateFlowLayout, UICollection
         let image = self.GetImageFromIndex(item: indexPath.item)
         self.selectedImages[indexPath.item] = image
         self._selectedImageCount = self.selectedImages.count
-        self.imagePickerDelegate?.imageDidSelect(self, index: indexPath.item, image: image)
+        self.delegate?.imageDidSelect(self, index: indexPath.item, image: image)
         self.CountViewUpdate()
         if !self.allowMultipleSelection
         {
@@ -189,7 +189,7 @@ extension PickerViewController: UICollectionViewDelegateFlowLayout, UICollection
         let image = self.GetImageFromIndex(item: indexPath.item)
         self.selectedImages[indexPath.item] = nil
         self._selectedImageCount = self.selectedImages.count
-        self.imagePickerDelegate?.imageDidDeselect(self, index: indexPath.item, image: image)
+        self.delegate?.imageDidDeselect(self, index: indexPath.item, image: image)
         self.CountViewUpdate()
     }
     

@@ -25,7 +25,7 @@ extension PickerViewController
 //            self.titleLabel.textColor = self.titleColor
 //            self.titleLabel.text = self.titleText
 //            self.countLabel.textColor = self.countTextColor
-            self.doneButton.addTarget(self, action: #selector(buttonUpInside(_:)), for: UIControlEvents.touchUpInside)
+            self.doneButton.addTarget(self, action: #selector(buttonUpInside(_:)), for: .touchUpInside)
 //            self.doneButton.setTitle(self.buttonTitle, for: UIControlState.normal)
 //            if self.buttonTintColor != nil
 //            {
