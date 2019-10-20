@@ -60,6 +60,24 @@ extension PickerViewController
         self.MainViewMoveToCenterOp(velocity: 0)
     }
     
+    func isSystemDarkMode(traitCollection: UITraitCollection) -> Bool
+    {
+        if #available(iOS 13.0, *)
+        {
+            return traitCollection.userInterfaceStyle == .dark ? true : false
+        }
+        return false
+    }
+    
+    func UpdateDarkMode()
+    {
+        self.decorationBar.backgroundColor = self.isDarkMode ? UIColor.white : UIColor.black
+        self.titleViewEffectView.effect = UIBlurEffect(style: self.isDarkMode ? .dark : .extraLight)
+        self.mainView.backgroundColor = self.isDarkMode ? UIColor.black : UIColor.white
+        self.countLabel.textColor = self.isDarkMode ? UIColor.black : UIColor.white
+        self.titleLabel.textColor = self.isDarkMode ? UIColor.white : UIColor.black
+    }
+    
     func CountViewUpdate()
     {
         self.countLabel.text = String(self.selectedImageCount)

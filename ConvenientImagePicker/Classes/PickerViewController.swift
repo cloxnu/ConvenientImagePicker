@@ -33,10 +33,18 @@ public class PickerViewController: UIViewController {
     /// A Boolean value that determines whether the picker view can mutiple selection.
     public var allowMultipleSelection = true
     public var maxSizeOfPicture = 1000
+    /// The number of pictures in a row.
     public var numberOfPictureInRow = 4
+    /// The interval between pictures.
     public var intervalOfPictures: CGFloat = 5
+    /// A Boolean value that determines whether the title label, count view, and close button exist.
     public var isSimpleMode = true
+    /// The displayed images, it's will be photo library if nil.
     public var images: [UIImage]?
+    /// A Boolean value that determines whether darkmode enable.
+    public var isDarkMode = false
+    /// A Boolean value that determines whether darkmode can switched automately. (only iOS 13 valid)
+    public var isSwitchDarkAutomately = true
     
 //    public var backgroundColor: UIColor = UIColor.white
 //    public var titleColor: UIColor = UIColor.black
@@ -157,8 +165,26 @@ public class PickerViewController: UIViewController {
     
     public override func viewDidAppear(_ animated: Bool) {
         //self.view.addSubview(self.mainView)
-        
+
+        self.isDarkMode = self.isSystemDarkMode(traitCollection: self.traitCollection)
+        self.UpdateDarkMode()
         self.MainViewMoveToCenterOp(velocity: 0)
+    }
+    
+    public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        if #available(iOS 13.0, *) {
+            if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection)
+            {
+                if self.isSwitchDarkAutomately
+                {
+                    self.isDarkMode = self.isSystemDarkMode(traitCollection: self.traitCollection)
+                    self.UpdateDarkMode()
+                }
+            }
+        } else {
+            // Fallback on earlier versions
+        }
     }
     
     let BackgroundAlpha: CGFloat = 0.5
