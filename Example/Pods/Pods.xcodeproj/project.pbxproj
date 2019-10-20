@@ -123,6 +123,9 @@
 		BE0A71C4235C287500D31E9D /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0A71C0235C287500D31E9D /* PickerViewController.swift */; };
 		BE0A71C5235C287500D31E9D /* PickerViewTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0A71C1235C287500D31E9D /* PickerViewTitleView.swift */; };
 		BE0A71C7235C28CC00D31E9D /* PickerCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0A71C6235C28CC00D31E9D /* PickerCollectionCell.swift */; };
+		BE0A71E6235CA63400D31E9D /* SelectedImage.png in Resources */ = {isa = PBXBuildFile; fileRef = BE0A71E3235CA63400D31E9D /* SelectedImage.png */; };
+		BE0A71E7235CA63400D31E9D /* SelectedImage@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BE0A71E4235CA63400D31E9D /* SelectedImage@3x.png */; };
+		BE0A71E8235CA63400D31E9D /* SelectedImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BE0A71E5235CA63400D31E9D /* SelectedImage@2x.png */; };
 		BE2E0A9AC5E2019BFD31452E96ED83D9 /* AssertionRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A32AC5FC9462774488E6F2773D7570 /* AssertionRecorder.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		BEDC36DEA21352A0F346A2513EE0540E /* QuickSpecBase.h in Headers */ = {isa = PBXBuildFile; fileRef = 05F3D57DE6385F0B15FDECFB5D0CD321 /* QuickSpecBase.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		BF162FE488440AC9824E22EF6BD760FC /* DSL+Wait.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73A498C03EDF95EBC3546ED010B17F6 /* DSL+Wait.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
@@ -383,6 +386,9 @@
 		BE0A71C0235C287500D31E9D /* PickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PickerViewController.swift; path = ConvenientImagePicker/Classes/PickerViewController.swift; sourceTree = "<group>"; };
 		BE0A71C1235C287500D31E9D /* PickerViewTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PickerViewTitleView.swift; path = ConvenientImagePicker/Classes/PickerViewTitleView.swift; sourceTree = "<group>"; };
 		BE0A71C6235C28CC00D31E9D /* PickerCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PickerCollectionCell.swift; path = ConvenientImagePicker/Classes/PickerCollectionCell.swift; sourceTree = "<group>"; };
+		BE0A71E3235CA63400D31E9D /* SelectedImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SelectedImage.png; sourceTree = "<group>"; };
+		BE0A71E4235CA63400D31E9D /* SelectedImage@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SelectedImage@3x.png"; sourceTree = "<group>"; };
+		BE0A71E5235CA63400D31E9D /* SelectedImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SelectedImage@2x.png"; sourceTree = "<group>"; };
 		BF4D4B76672499C8D0D092C4F7254A10 /* DSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DSL.swift; path = Sources/Nimble/DSL.swift; sourceTree = "<group>"; };
 		C23453623138A46389CA75D4FC80F557 /* SwiftSupport.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftSupport.swift; path = FBSnapshotTestCase/SwiftSupport.swift; sourceTree = "<group>"; };
 		C3C39F10A12626B59ED72634F988620A /* AdapterProtocols.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AdapterProtocols.swift; path = Sources/Nimble/Adapters/AdapterProtocols.swift; sourceTree = "<group>"; };
@@ -504,6 +510,7 @@
 		1E482DD573EEE53B234A06A21A53DCDC /* ConvenientImagePicker */ = {
 			isa = PBXGroup;
 			children = (
+				BE0A71DA235CA5B800D31E9D /* Images */,
 				BE0A71C0235C287500D31E9D /* PickerViewController.swift */,
 				BE0A71BF235C287500D31E9D /* PickerViewDataSource.swift */,
 				BE0A71C1235C287500D31E9D /* PickerViewTitleView.swift */,
@@ -754,6 +761,16 @@
 				D352E284FC57A5798F43A222710DF03F /* Support Files */,
 			);
 			path = Nimble;
+			sourceTree = "<group>";
+		};
+		BE0A71DA235CA5B800D31E9D /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				BE0A71E3235CA63400D31E9D /* SelectedImage.png */,
+				BE0A71E5235CA63400D31E9D /* SelectedImage@2x.png */,
+				BE0A71E4235CA63400D31E9D /* SelectedImage@3x.png */,
+			);
+			path = Images;
 			sourceTree = "<group>";
 		};
 		BE30EBDF379006E9C8A9C20121E7F4C6 /* Pods-ConvenientImagePicker_Example */ = {
@@ -1176,6 +1193,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE0A71E7235CA63400D31E9D /* SelectedImage@3x.png in Resources */,
+				BE0A71E6235CA63400D31E9D /* SelectedImage.png in Resources */,
+				BE0A71E8235CA63400D31E9D /* SelectedImage@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -164,7 +164,7 @@ extension PickerViewController: UICollectionViewDelegateFlowLayout, UICollection
         let asset = self.assetsFetchResults[item]
         let options = PHImageRequestOptions()
         options.isSynchronous = true
-        options.resizeMode = .exact
+        options.resizeMode = .none
         options.deliveryMode = .highQualityFormat
         options.isNetworkAccessAllowed = true
         PHImageManager.default().requestImage(for: asset,

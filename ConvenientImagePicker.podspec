@@ -34,7 +34,7 @@ TODO: Add long description of the pod here.
   
   s.resource = 'ConvenientImagePicker/Assets/*.xcassets'
   s.resource_bundles = {
-    'ConvenientImagePicker' => ['ConvenientImagePicker/Assets/*.{png,xcassets}']
+    'ConvenientImagePicker' => ['Images/*.{png,xcassets}']
   }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
