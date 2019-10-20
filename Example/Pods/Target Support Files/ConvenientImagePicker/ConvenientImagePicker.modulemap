@@ -1,0 +1,6 @@
+framework module ConvenientImagePicker {
+  umbrella header "ConvenientImagePicker-umbrella.h"
+
+  export *
+  module * { export * }
+}
