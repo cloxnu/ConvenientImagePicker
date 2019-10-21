@@ -79,13 +79,15 @@ func imageSelectMax(_ imagePicker: PickerViewController, wangToSelectIndex: Int,
 
 ```imageSelectMax``` will inform you that user want to select an image, but this time he has selected the limit number of images.
 
+---
+
 You can use ```imagePicker.selectedImageCount``` in last 3 functions to get the number of images user has selected.
 
 Do not initialize ```pickerViewController``` outside of function ```PresentPhotoPicker```.
 
 So far, this is the simplest usage of this pod.
 
-## Optional
+## Optional Configuration
 
 Sure, You can use more features of the image picker, or even customize it, instead of just using the default configuration.
 
@@ -104,5 +106,28 @@ pickerViewController.isSwitchDarkAutomately = true // A Boolean value that deter
 
 ### when 'isSimpleMode = false'
 
+<img src="https://github.com/CLOXnu/ConvenientImagePicker/blob/master/Documentation/simpleMode=false.png" alt="simpleMode=false" align="right" width="200"/>
+
+When ```pickerViewController.isSimpleMode = false``` appear in your configure list, you are supposed to learn about ```titleView```, ```titleLabel```, ```countLabel```, ```doneButton```, and ```titleViewEffectView```.(As shown on the right)
+
+You can customize ```titleView```, ```titleLabel```, ```countLabel```, and ```doneButton``` when ```isSimpleMode = false```.
+
+You can also customize ```titleViewEffectView```, ```mainView```, and ```collectionView``` regardless of the value of ```isSimpleMode```, because they are always exist.
+
+By the way, ```decorationBar``` can be customized in the case of ```isSimpleMode = true```.
+
+If more in-controller-override needed, ```extension PickerViewController``` is necessary.
+
+## ⚠️Notice
+
+* Do not use **ConvenientImagePicker** with Landscape on iPhone.
+* **ConvenientImagePicker** is not compatible with Objective-C.
+* Please initialize new variable ```pickerViewController``` whenever preparing to present the image picker.
+
+## License
+
+**ConvenientImagePicker** is released under the MIT license. See [LICENSE](LICENSE.md) for details.
+
+Thank you for your support!🙏
 
 
