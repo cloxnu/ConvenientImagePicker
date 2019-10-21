@@ -3,9 +3,7 @@ This application makes use of the following third party libraries:
 
 ## ConvenientImagePicker
 
-This project is licensed under the MIT license.
-
-Copyright (c) 2013 - 2014 CocoaPods Dev Team
+Copyright (c) 2019 CLOX <o18089541818@outlook.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

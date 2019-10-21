@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "summary": "A short description of ConvenientImagePicker.",
   "description": "TODO: Add long description of the pod here.",
-  "homepage": "https://github.com/CLOX/ConvenientImagePicker",
+  "homepage": "https://github.com/CLOXnu/ConvenientImagePicker",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
@@ -18,5 +18,11 @@
   "platforms": {
     "ios": "8.0"
   },
-  "source_files": "ConvenientImagePicker/Classes/**/*"
+  "source_files": "ConvenientImagePicker/Classes/**/*",
+  "resources": "ConvenientImagePicker/Assets/*.xcassets",
+  "resource_bundles": {
+    "ConvenientImagePicker": [
+      "Images/*.{png,xcassets}"
+    ]
+  }
 }

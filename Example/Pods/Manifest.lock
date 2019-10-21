@@ -32,7 +32,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  ConvenientImagePicker: 5f1cb818a0279dd322299231e694302fdc9dd616
+  ConvenientImagePicker: 3eca76ed42e6aa8f7e5fdc38623f8eb28e4fc8e1
   FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
   Nimble: 051e3d8912d40138fa5591c78594f95fb172af37
   Nimble-Snapshots: f5459b5b091678dc942d03ec4741cacb58ba4a52

@@ -32,7 +32,6 @@ TODO: Add long description of the pod here.
 
   s.source_files = 'ConvenientImagePicker/Classes/**/*'
   
-  s.resource = 'ConvenientImagePicker/Assets/*.xcassets'
   s.resource_bundles = {
     'ConvenientImagePicker' => ['Images/*.{png,xcassets}']
   }
