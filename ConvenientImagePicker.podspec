@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'ConvenientImagePicker'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of ConvenientImagePicker.'
+  s.summary          = 'A beautiful iOS Image Picker.'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+TODO: This is a beautiful and simple image picker that can be used to select photos of the system album, or your own image collection, alternative multi-select or single-select, and you can define a more beautiful look.
                        DESC
 
   s.homepage         = 'https://github.com/CLOXnu/ConvenientImagePicker'
