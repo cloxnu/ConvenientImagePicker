@@ -35,7 +35,6 @@ class ViewController: UIViewController, ConvenientImagePickerDelegate {
     {
         for oneImage in selectedImages
         {
-            print("size: \(oneImage.value.cgImage?.width), \(oneImage.value.cgImage?.height)")
             self.imageview.image = oneImage.value
         }
     }
