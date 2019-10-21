@@ -12,10 +12,97 @@
 ![Swift 4.0+](https://img.shields.io/badge/Swift-4.0%2B-orange.svg)
 [![中文 README](https://img.shields.io/badge/%E4%B8%AD%E6%96%87-README-blue.svg?style=flat)](https://github.com/CLOXnu/ConvenientImagePicker/blob/master/README.zh-cn.md)
 
-## Overview & Detail
+## Overview
 
 **ConvenientImagePicker** provides smooth interaction, has excellent user experience, it can display system photo album and can also display the specified images.
 
-![Overview](Documentation/overview.GIF)![Overview](Documentation/detailview.GIF)
+It is worth emphasizing that the **ConvenientImagePicker** view has precise gesture control.
+
+![Overview](Documentation/overview.GIF)![Detailview](Documentation/detailview.GIF)
+
+## Requirements
+
+- iOS 9.3+
+- Xcode 9.0+
+- Swift 4.0+
+
+## Installation
+
+**ConvenientImagePicker** can be installed through [CocoaPods](http://cocoapods.org), add the following entry to your Podfile:
+
+```ruby
+pod 'ConvenientImagePicker'
+```
+
+Then run ```pod install```,
+
+and include the image picker wherever you need it with
+
+```swift
+import ConvenientImagePicker
+```
+
+, it's really a simple way.
+
+## Usage
+
+When you prepare to present this image picker, we assume that you will call a function like this:
+
+```swift
+func PresentPhotoPicker()
+```
+
+Well, the most simplest version is add the following code in this function:
+
+```swift
+let pickerViewController = PickerViewController()
+pickerViewController.delegate = self
+self.present(pickerViewController, animated: true, completion: nil)
+```
+
+Then, you are supposed to implement ```ConvenientImagePickerDelegate``` in your own view controller:
+
+And implement these delegate function:
+
+```swift
+func imagePickerDidCancel(_ selectedImages: [Int : UIImage])
+func imageDidSelect(_ imagePicker: PickerViewController, index: Int, image: UIImage?)
+func imageDidDeselect(_ imagePicker: PickerViewController, index: Int, image: UIImage?)
+func imageSelectMax(_ imagePicker: PickerViewController, wangToSelectIndex: Int, wangToSelectImage: UIImage?)
+```
+
+```imagePickerDidCancel``` will inform you that user has cancelled the image picker, and return the images user has selected.
+
+```imageDidSelect``` will inform you that user has selected an image.
+
+```imageDidDeselect``` will inform you that user has deselected an image.
+
+```imageSelectMax``` will inform you that user want to select an image, but this time he has selected the limit number of images.
+
+You can use ```imagePicker.selectedImageCount``` in last 3 functions to get the number of images user has selected.
+
+Do not initialize ```pickerViewController``` outside of function ```PresentPhotoPicker```.
+
+So far, this is the simplest usage of this pod.
+
+## Optional
+
+Sure, You can use more features of the image picker, or even customize it, instead of just using the default configuration.
+
+Do start from ```let pickerViewController = PickerViewController()``` there:
+
+```swift
+pickerViewController.maxNumberOfSelectedImage = 50 // The maximum number of pictures allowed.
+pickerViewController.allowMultipleSelection = true // A Boolean value that determines whether the picker view can mutiple selection.
+pickerViewController.numberOfPictureInRow = 4 // The number of pictures in a row.
+pickerViewController.intervalOfPictures = 5.0 // The interval between pictures.
+pickerViewController.isSimpleMode = true // A Boolean value that determines whether the title label, count view, and close button exist.
+pickerViewController.images = nil // The displayed images, it's will be photo library if nil.
+pickerViewController.isDarkMode = false // A Boolean value that determines whether darkmode enable.
+pickerViewController.isSwitchDarkAutomately = true // A Boolean value that determines whether darkmode can switched automately. (only iOS 13 valid)
+```
+
+### when 'isSimpleMode = false'
+
 
 
