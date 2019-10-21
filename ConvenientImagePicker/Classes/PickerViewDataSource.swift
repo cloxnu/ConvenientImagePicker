@@ -44,7 +44,7 @@ extension PickerViewController: UICollectionViewDelegateFlowLayout, UICollection
 
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         UIView.animate(withDuration: 0.1) {
-            collectionView.cellForItem(at: indexPath)?.layer.borderWidth = 5.0
+            (collectionView.cellForItem(at: indexPath) as? PickerCollectionCell)?.image.layer.borderWidth = 3.0
             (collectionView.cellForItem(at: indexPath) as? PickerCollectionCell)?.selectedImageView.alpha = 1
             (collectionView.cellForItem(at: indexPath) as? PickerCollectionCell)?.upper.alpha = 0.3
         }
@@ -53,7 +53,7 @@ extension PickerViewController: UICollectionViewDelegateFlowLayout, UICollection
     
     public func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         UIView.animate(withDuration: 0.1) {
-            collectionView.cellForItem(at: indexPath)?.layer.borderWidth = 0.0
+            (collectionView.cellForItem(at: indexPath) as? PickerCollectionCell)?.image.layer.borderWidth = 0.0
             (collectionView.cellForItem(at: indexPath) as? PickerCollectionCell)?.selectedImageView.alpha = 0
             (collectionView.cellForItem(at: indexPath) as? PickerCollectionCell)?.upper.alpha = 0
         }
@@ -135,8 +135,8 @@ extension PickerViewController: UICollectionViewDelegateFlowLayout, UICollection
     func PickerCollectionCellInit(indexPath: IndexPath) -> UICollectionViewCell // Pay Attention: Info.plist NSPhotoLibraryUsageDescription !!!
     {
         guard let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: "PickerCollectionCell", for: indexPath) as? PickerCollectionCell else { return UICollectionViewCell() }
-        cell.layer.borderColor = UIColor.systemBlue.cgColor
-        cell.layer.borderWidth = self.selectedImages[indexPath.item] == nil ? 0.0 : 5.0
+        cell.image.layer.borderColor = UIColor.systemBlue.cgColor
+        cell.image.layer.borderWidth = self.selectedImages[indexPath.item] == nil ? 0.0 : 3.0
         cell.selectedImageView.alpha = self.selectedImages[indexPath.item] == nil ? 0 : 1
         cell.upper.alpha = self.selectedImages[indexPath.item] == nil ? 0 : 0.3
         

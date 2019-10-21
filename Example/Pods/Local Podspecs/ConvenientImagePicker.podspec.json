@@ -19,7 +19,6 @@
     "ios": "8.0"
   },
   "source_files": "ConvenientImagePicker/Classes/**/*",
-  "resources": "ConvenientImagePicker/Assets/*.xcassets",
   "resource_bundles": {
     "ConvenientImagePicker": [
       "Images/*.{png,xcassets}"
