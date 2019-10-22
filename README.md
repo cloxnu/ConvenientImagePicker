@@ -129,9 +129,9 @@ If more in-controller-override needed, ```extension PickerViewController``` is n
 
 In [TextCard](https://apps.apple.com/cn/app/%E6%96%87%E5%AD%97%E5%8D%A1%E7%89%87/id1473078157), which is an iOS App has imported **ConvenientImagePicker**.
 
-![icon](Documentation/TextBoxIconNew.png =200x)
+<img src="Documentation/TextBoxIconNew.png" alt="TextBoxIconNew" width="100"/>
 
-![instance](Documentation/An Instance.JPG)
+<img src="Documentation/instance.jpg" alt="instance" width="300"/>
 
 
 ## License
