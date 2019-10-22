@@ -81,7 +81,7 @@ func imageSelectMax(_ imagePicker: PickerViewController, wangToSelectIndex: Int,
 
 ---
 
-You can use ```imagePicker.selectedImageCount``` in last 3 functions to get the number of images user has selected.
+You can use ```imagePicker.selectedImageCount``` in last 3 functions to get the number of the images user has selected.
 
 Do not initialize ```pickerViewController``` outside of function ```PresentPhotoPicker```.
 
@@ -120,6 +120,7 @@ If more in-controller-override needed, ```extension PickerViewController``` is n
 
 ## ⚠️Notice
 
+* Do not forget to add ```NSPhotoLibraryUsageDescription``` in your Info.plist if you want to present a photo picker.
 * Do not use **ConvenientImagePicker** with Landscape on iPhone.
 * **ConvenientImagePicker** is not compatible with Objective-C.
 * Please initialize new variable ```pickerViewController``` whenever preparing to present the image picker.
