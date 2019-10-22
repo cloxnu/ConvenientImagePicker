@@ -125,6 +125,15 @@ If more in-controller-override needed, ```extension PickerViewController``` is n
 * **ConvenientImagePicker** is not compatible with Objective-C.
 * Please initialize new variable ```pickerViewController``` whenever preparing to present the image picker.
 
+## Instance
+
+In [TextCard](https://apps.apple.com/cn/app/%E6%96%87%E5%AD%97%E5%8D%A1%E7%89%87/id1473078157), which is an iOS App has imported **ConvenientImagePicker**.
+
+![icon](Documentation/TextBoxIconNew.png =200x)
+
+![instance](Documentation/An Instance.JPG)
+
+
 ## License
 
 **ConvenientImagePicker** is released under the MIT license. See [LICENSE](LICENSE.md) for details.
