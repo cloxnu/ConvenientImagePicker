@@ -45,7 +45,7 @@
 		6176032ED32EA54D2CE1D31D /* Pods-ConvenientImagePicker_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConvenientImagePicker_Tests.debug.xcconfig"; path = "Target Support Files/Pods-ConvenientImagePicker_Tests/Pods-ConvenientImagePicker_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		9BCE2BC66D2E26E95F455BA5 /* ConvenientImagePicker.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = ConvenientImagePicker.podspec; path = ../ConvenientImagePicker.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		ABD85077A638FB97B01F90C2 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		BE0E89A9237060F100CE1CB5 /* Release Notes.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = "Release Notes.md"; path = "../Release Notes.md"; sourceTree = "<group>"; };
+		BE0E89A9237060F100CE1CB5 /* ReleaseNotes.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = ReleaseNotes.md; path = ../ReleaseNotes.md; sourceTree = "<group>"; };
 		F1A60F5AE608FA3944C072EB /* Pods-ConvenientImagePicker_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConvenientImagePicker_Tests.release.xcconfig"; path = "Target Support Files/Pods-ConvenientImagePicker_Tests/Pods-ConvenientImagePicker_Tests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -141,7 +141,7 @@
 		607FACF51AFB993E008FA782 /* Podspec Metadata */ = {
 			isa = PBXGroup;
 			children = (
-				BE0E89A9237060F100CE1CB5 /* Release Notes.md */,
+				BE0E89A9237060F100CE1CB5 /* ReleaseNotes.md */,
 				9BCE2BC66D2E26E95F455BA5 /* ConvenientImagePicker.podspec */,
 				ABD85077A638FB97B01F90C2 /* README.md */,
 			);
