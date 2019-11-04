@@ -136,15 +136,15 @@ extension PickerViewController: UICollectionViewDelegateFlowLayout, UICollection
     {
         guard let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: "PickerCollectionCell", for: indexPath) as? PickerCollectionCell else { return UICollectionViewCell() }
         cell.image.layer.borderColor = UIColor.systemBlue.cgColor
-        cell.image.layer.borderWidth = self.selectedImages[indexPath.item] == nil ? 0.0 : 3.0
-        cell.selectedImageView.alpha = self.selectedImages[indexPath.item] == nil ? 0 : 1
-        cell.upper.alpha = self.selectedImages[indexPath.item] == nil ? 0 : 0.3
+        cell.image.layer.borderWidth = self.selectedImagesIndex.contains(indexPath.item) ? 3.0 : 0.0
+        cell.selectedImageView.alpha = self.selectedImagesIndex.contains(indexPath.item) ? 1 : 0
+        cell.upper.alpha = self.selectedImagesIndex.contains(indexPath.item) ? 0.3 : 0
         
         if self.images == nil
         {
             let asset = self.assetsFetchResults[indexPath.item]
             //获取缩略图
-            self.imageManager.requestImage(for: asset, targetSize: CGSize(width: 500, height: 500),
+            self.imageManager.requestImage(for: asset, targetSize: CGSize(width: 200, height: 200),
                                            contentMode: PHImageContentMode.aspectFill,
                                            options: nil) { (image, nfo) in
                                             cell.image.image = image
@@ -179,8 +179,9 @@ extension PickerViewController: UICollectionViewDelegateFlowLayout, UICollection
     func PickerCollectionCellOp(indexPath: IndexPath)
     {
         let image = self.GetImageFromIndex(item: indexPath.item)
-        self.selectedImages[indexPath.item] = image
-        self._selectedImageCount = self.selectedImages.count
+        //self.selectedImages[indexPath.item] = image
+        self.selectedImagesIndex.insert(indexPath.item)
+        self._selectedImageCount = self.selectedImagesIndex.count
         self.delegate?.imageDidSelect(self, index: indexPath.item, image: image)
         self.CountViewUpdate()
         if !self.allowMultipleSelection
@@ -192,8 +193,9 @@ extension PickerViewController: UICollectionViewDelegateFlowLayout, UICollection
     func PickerCollectionCellDeOp(indexPath: IndexPath)
     {
         let image = self.GetImageFromIndex(item: indexPath.item)
-        self.selectedImages[indexPath.item] = nil
-        self._selectedImageCount = self.selectedImages.count
+        //self.selectedImages[indexPath.item] = nil
+        self.selectedImagesIndex.remove(indexPath.item)
+        self._selectedImageCount = self.selectedImagesIndex.count
         self.delegate?.imageDidDeselect(self, index: indexPath.item, image: image)
         self.CountViewUpdate()
     }

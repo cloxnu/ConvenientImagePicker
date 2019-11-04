@@ -132,7 +132,7 @@ public class PickerViewController: UIViewController {
     var assetsFetchResults: PHFetchResult<PHAsset>!
     var imageManager: PHCachingImageManager!
     
-    var selectedImages = [Int : UIImage]()
+    var selectedImagesIndex = Set<Int>()
     
     
     public override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -238,7 +238,12 @@ public class PickerViewController: UIViewController {
             self.mainView.frame = CGRect(x: 0, y: screenHeight, width: screenWidth, height: screenHeight + 50.0)
             self.backView.alpha = 0
         }) { (true) in
-            self.delegate?.imagePickerDidCancel(self.selectedImages)
+            var selectedImages = [Int : UIImage]()
+            for oneIndex in self.selectedImagesIndex
+            {
+                selectedImages[oneIndex] = self.GetImageFromIndex(item: oneIndex)
+            }
+            self.delegate?.imagePickerDidCancel(selectedImages)
             self.dismiss(animated: true, completion: nil)
         }
     }
