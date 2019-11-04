@@ -12,6 +12,10 @@
 ![Swift 4.0+](https://img.shields.io/badge/Swift-4.0%2B-orange.svg)
 [![中文 README](https://img.shields.io/badge/%E4%B8%AD%E6%96%87-README-blue.svg?style=flat)](https://github.com/CLOXnu/ConvenientImagePicker/blob/master/README.zh-cn.md)
 
+## Release Notes
+
+the newest version is 0.1.1, memory problem solved. More information see [Release Notes](ReleaseNotes.md)
+
 ## Overview
 
 **ConvenientImagePicker** provides smooth interaction, has excellent user experience, it can display system photo album and can also display the specified images.
