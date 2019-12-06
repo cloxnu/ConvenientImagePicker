@@ -18,7 +18,7 @@ let statusBarHeight = UIApplication.shared.statusBarFrame.height
     func imagePickerDidCancel(_ selectedImages: [Int : UIImage])
     func imageDidSelect(_ imagePicker: PickerViewController, index: Int, image: UIImage?)
     func imageDidDeselect(_ imagePicker: PickerViewController, index: Int, image: UIImage?)
-    func imageSelectMax(_ imagePicker: PickerViewController, wangToSelectIndex: Int, wangToSelectImage: UIImage?)
+    func imageSelectMax(_ imagePicker: PickerViewController, wantToSelectIndex: Int, wantToSelectImage: UIImage?)
 }
 
 public class PickerViewController: UIViewController {
@@ -45,6 +45,8 @@ public class PickerViewController: UIViewController {
     public var isDarkMode = false
     /// A Boolean value that determines whether darkmode can switched automately. (only iOS 13 valid)
     public var isSwitchDarkAutomately = true
+    /// A set of index of selected image when the picker appears.
+    public var initialSelectedIndex = Set<Int>()
     
 //    public var backgroundColor: UIColor = UIColor.white
 //    public var titleColor: UIColor = UIColor.black
@@ -155,6 +157,7 @@ public class PickerViewController: UIViewController {
         self.view.addSubview(self.backView)
         self.view.addSubview(self.mainView)
         
+        self.selectedImagesIndex = self.initialSelectedIndex
         self.titleView.frame = CGRect(x: 0, y: 0, width: screenWidth, height: self.isSimpleMode ? 15 : 60)
         
         self.PangestureInit()

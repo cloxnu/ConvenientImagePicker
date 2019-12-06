@@ -36,28 +36,40 @@ extension PickerViewController: UICollectionViewDelegateFlowLayout, UICollection
     public func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
         if self.selectedImageCount >= self.maxNumberOfSelectedImage
         {
-            self.delegate?.imageSelectMax(self, wangToSelectIndex: indexPath.item, wangToSelectImage: self.GetImageFromIndex(item: indexPath.item))
+            self.delegate?.imageSelectMax(self, wantToSelectIndex: indexPath.item, wantToSelectImage: self.GetImageFromIndex(item: indexPath.item))
             return false
         }
         return true
     }
 
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        UIView.animate(withDuration: 0.1) {
-            (collectionView.cellForItem(at: indexPath) as? PickerCollectionCell)?.image.layer.borderWidth = 3.0
-            (collectionView.cellForItem(at: indexPath) as? PickerCollectionCell)?.selectedImageView.alpha = 1
-            (collectionView.cellForItem(at: indexPath) as? PickerCollectionCell)?.upper.alpha = 0.3
-        }
-        self.PickerCollectionCellOp(indexPath: indexPath)
+        self.cellTouched(collectionView, didTouchItemAt: indexPath)
     }
     
     public func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        UIView.animate(withDuration: 0.1) {
-            (collectionView.cellForItem(at: indexPath) as? PickerCollectionCell)?.image.layer.borderWidth = 0.0
-            (collectionView.cellForItem(at: indexPath) as? PickerCollectionCell)?.selectedImageView.alpha = 0
-            (collectionView.cellForItem(at: indexPath) as? PickerCollectionCell)?.upper.alpha = 0
+        self.cellTouched(collectionView, didTouchItemAt: indexPath)
+    }
+    
+    func cellTouched(_ collectionView: UICollectionView, didTouchItemAt indexPath: IndexPath)
+    {
+        if self.selectedImagesIndex.contains(indexPath.item)
+        {
+            UIView.animate(withDuration: 0.1) {
+                (collectionView.cellForItem(at: indexPath) as? PickerCollectionCell)?.image.layer.borderWidth = 0.0
+                (collectionView.cellForItem(at: indexPath) as? PickerCollectionCell)?.selectedImageView.alpha = 0
+                (collectionView.cellForItem(at: indexPath) as? PickerCollectionCell)?.upper.alpha = 0
+            }
+            self.PickerCollectionCellDeOp(indexPath: indexPath)
         }
-        self.PickerCollectionCellDeOp(indexPath: indexPath)
+        else
+        {
+            UIView.animate(withDuration: 0.1) {
+                (collectionView.cellForItem(at: indexPath) as? PickerCollectionCell)?.image.layer.borderWidth = 3.0
+                (collectionView.cellForItem(at: indexPath) as? PickerCollectionCell)?.selectedImageView.alpha = 1
+                (collectionView.cellForItem(at: indexPath) as? PickerCollectionCell)?.upper.alpha = 0.3
+            }
+            self.PickerCollectionCellOp(indexPath: indexPath)
+        }
     }
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -129,6 +141,9 @@ extension PickerViewController: UICollectionViewDelegateFlowLayout, UICollection
     }
     
     func resetCachedAssets(){
+        if PHPhotoLibrary.authorizationStatus() != .authorized {
+            return
+        }
         self.imageManager.stopCachingImagesForAllAssets()
     }
     
@@ -143,8 +158,9 @@ extension PickerViewController: UICollectionViewDelegateFlowLayout, UICollection
         if self.images == nil
         {
             let asset = self.assetsFetchResults[indexPath.item]
+            let length = (screenWidth - self.intervalOfPictures * CGFloat(self.numberOfPictureInRow + 1)) / CGFloat(self.numberOfPictureInRow)
             //获取缩略图
-            self.imageManager.requestImage(for: asset, targetSize: CGSize(width: 200, height: 200),
+            self.imageManager.requestImage(for: asset, targetSize: CGSize(width: length * 2, height: length * 2),
                                            contentMode: PHImageContentMode.aspectFill,
                                            options: nil) { (image, nfo) in
                                             cell.image.image = image
@@ -178,11 +194,10 @@ extension PickerViewController: UICollectionViewDelegateFlowLayout, UICollection
     
     func PickerCollectionCellOp(indexPath: IndexPath)
     {
-        let image = self.GetImageFromIndex(item: indexPath.item)
         //self.selectedImages[indexPath.item] = image
         self.selectedImagesIndex.insert(indexPath.item)
         self._selectedImageCount = self.selectedImagesIndex.count
-        self.delegate?.imageDidSelect(self, index: indexPath.item, image: image)
+        self.delegate?.imageDidSelect(self, index: indexPath.item, image: self.GetImageFromIndex(item: indexPath.item))
         self.CountViewUpdate()
         if !self.allowMultipleSelection
         {
@@ -192,11 +207,10 @@ extension PickerViewController: UICollectionViewDelegateFlowLayout, UICollection
     
     func PickerCollectionCellDeOp(indexPath: IndexPath)
     {
-        let image = self.GetImageFromIndex(item: indexPath.item)
         //self.selectedImages[indexPath.item] = nil
         self.selectedImagesIndex.remove(indexPath.item)
         self._selectedImageCount = self.selectedImagesIndex.count
-        self.delegate?.imageDidDeselect(self, index: indexPath.item, image: image)
+        self.delegate?.imageDidDeselect(self, index: indexPath.item, image: self.GetImageFromIndex(item: indexPath.item))
         self.CountViewUpdate()
     }
     
