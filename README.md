@@ -14,7 +14,7 @@
 
 ## Release Notes
 
-the newest version is 0.1.2. More information see [Release Notes](ReleaseNotes.md)
+the newest version is 0.1.2, `func imageSelectMax(_:, wantToSelectIndex:, wantToSelectImage:)` has been renamed. More information see [Release Notes](ReleaseNotes.md)
 
 ## Overview
 
