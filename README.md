@@ -14,7 +14,7 @@
 
 ## Release Notes
 
-the newest version is 0.1.1, memory problem solved. More information see [Release Notes](ReleaseNotes.md)
+the newest version is 0.1.2. More information see [Release Notes](ReleaseNotes.md)
 
 ## Overview
 
@@ -106,6 +106,7 @@ pickerViewController.isSimpleMode = true // A Boolean value that determines whet
 pickerViewController.images = nil // The displayed images, it's will be photo library if nil.
 pickerViewController.isDarkMode = false // A Boolean value that determines whether darkmode enable.
 pickerViewController.isSwitchDarkAutomately = true // A Boolean value that determines whether darkmode can switched automately. (only iOS 13 valid)
+pickerViewController.initialSelectedIndex = [0,1,2,3,4] // A set of index of selected image when the picker appears.
 ```
 
 ### when 'isSimpleMode = false'
@@ -126,7 +127,6 @@ If more in-controller-override needed, ```extension PickerViewController``` is n
 
 * Do not forget to add ```NSPhotoLibraryUsageDescription``` in your Info.plist if you want to present a photo picker.
 * Do not use **ConvenientImagePicker** with Landscape on iPhone.
-* **ConvenientImagePicker** is not compatible with Objective-C.
 * Please initialize new variable ```pickerViewController``` whenever preparing to present the image picker.
 
 ## Instance
