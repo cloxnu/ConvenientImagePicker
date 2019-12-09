@@ -126,6 +126,7 @@ If more in-controller-override needed, ```extension PickerViewController``` is n
 ## ⚠️Notice
 
 * Do not forget to add ```NSPhotoLibraryUsageDescription``` in your Info.plist if you want to present a photo picker.
+* Check read album permissions before using photo picker.
 * Do not use **ConvenientImagePicker** with Landscape on iPhone.
 * Please initialize new variable ```pickerViewController``` whenever preparing to present the image picker.
 
