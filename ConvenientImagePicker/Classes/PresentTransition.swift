@@ -32,6 +32,14 @@ class PresentTransition: NSObject, UIViewControllerAnimatedTransitioning, UIView
             //guard let fromView = transitionContext.view(forKey: .from) else {return}
             guard let toView = transitionContext.view(forKey: .to) else {return}
             
+            if let toVC = transitionContext.viewController(forKey: .to) as? PickerViewController
+            {
+                if toVC.isAnimated
+                {
+                    toVC.isAnimated = transitionContext.isAnimated
+                }
+            }
+            
             toView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
             container.addSubview(toView)
             transitionContext.completeTransition(true)

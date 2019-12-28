@@ -57,7 +57,7 @@ extension PickerViewController
     
     @objc func titleTapped(_ gesture: UITapGestureRecognizer)
     {
-        self.MainViewMoveToCenterOp(velocity: 0)
+        self.MainViewMoveToCenterOp(velocity: 0, isAnimated: true)
     }
     
     func isSystemDarkMode(traitCollection: UITraitCollection) -> Bool

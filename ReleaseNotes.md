@@ -1,3 +1,14 @@
+# 0.2 Release Notes
+
+2019-12-28 Update
+
+* Fixed again a possible crash of some devices when camera access is not allowed.
+* Change the sort method of photo collections from `creationDate` to `modificationDate`.
+* Add new property `isAnimated`, a Boolean value that determines whether the appear animation is exist.
+* Enable the functionality of `isAnimated` parameter in present function in your view.
+* Add new property `customSelectedImage`, a selectedImage type value that relates to the image of selected picture.
+* Add new property `isSupportLandscape`, a Boolean value that determines whether the ability of landscape.
+
 # 0.1.2 Release Notes
 
 2019-12-06 Update

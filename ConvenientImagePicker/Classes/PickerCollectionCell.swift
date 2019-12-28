@@ -13,6 +13,12 @@ class PickerCollectionCell: UICollectionViewCell {
     var selectedImageView: UIImageView!
     var upper: UIView!
     
+    var customSelectedImage: UIImage?
+    var selectedImageHeightCons: NSLayoutConstraint?
+    var selectedImageWidthCons: NSLayoutConstraint?
+    var selectedImageTrailingCons: NSLayoutConstraint?
+    var selectedImageBottomCons: NSLayoutConstraint?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -49,7 +55,7 @@ class PickerCollectionCell: UICollectionViewCell {
         
         self.selectedImageView = UIImageView(frame: CGRect(origin: CGPoint.zero, size: frame.size))
         self.selectedImageView.alpha = 0
-        self.selectedImageView.image = selectedImage
+        self.selectedImageView.image = self.customSelectedImage ?? selectedImage
         //self.selectedImageView.backgroundColor = UIColor.black
         self.selectedImageView.contentMode = .scaleAspectFill
         self.selectedImageView.clipsToBounds = true
@@ -65,10 +71,10 @@ class PickerCollectionCell: UICollectionViewCell {
         let cons4 = NSLayoutConstraint(item: self.image!, attribute: NSLayoutConstraint.Attribute.bottom, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self, attribute: NSLayoutConstraint.Attribute.bottom, multiplier: 1, constant: 0)
         
         self.selectedImageView.translatesAutoresizingMaskIntoConstraints = false
-        let cons5 = NSLayoutConstraint(item: self.selectedImageView!, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 20)
-        let cons6 = NSLayoutConstraint(item: self.selectedImageView!, attribute: NSLayoutConstraint.Attribute.trailing, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self, attribute: NSLayoutConstraint.Attribute.trailing, multiplier: 1, constant: -10)
-        let cons7 = NSLayoutConstraint(item: self.selectedImageView!, attribute: NSLayoutConstraint.Attribute.width, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 20)
-        let cons8 = NSLayoutConstraint(item: self.selectedImageView!, attribute: NSLayoutConstraint.Attribute.bottom, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self, attribute: NSLayoutConstraint.Attribute.bottom, multiplier: 1, constant: -10)
+        self.selectedImageHeightCons = NSLayoutConstraint(item: self.selectedImageView!, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 20)
+        self.selectedImageTrailingCons = NSLayoutConstraint(item: self.selectedImageView!, attribute: NSLayoutConstraint.Attribute.trailing, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self, attribute: NSLayoutConstraint.Attribute.trailing, multiplier: 1, constant: -10)
+        self.selectedImageWidthCons = NSLayoutConstraint(item: self.selectedImageView!, attribute: NSLayoutConstraint.Attribute.width, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 20)
+        self.selectedImageBottomCons = NSLayoutConstraint(item: self.selectedImageView!, attribute: NSLayoutConstraint.Attribute.bottom, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self, attribute: NSLayoutConstraint.Attribute.bottom, multiplier: 1, constant: -10)
         
         self.upper.translatesAutoresizingMaskIntoConstraints = false
         let cons9 = NSLayoutConstraint(item: self.upper!, attribute: NSLayoutConstraint.Attribute.leading, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self, attribute: NSLayoutConstraint.Attribute.leading, multiplier: 1, constant: 3)
@@ -80,10 +86,10 @@ class PickerCollectionCell: UICollectionViewCell {
         cons2.isActive = true
         cons3.isActive = true
         cons4.isActive = true
-        cons5.isActive = true
-        cons6.isActive = true
-        cons7.isActive = true
-        cons8.isActive = true
+        self.selectedImageHeightCons?.isActive = true
+        self.selectedImageTrailingCons?.isActive = true
+        self.selectedImageWidthCons?.isActive = true
+        self.selectedImageBottomCons?.isActive = true
         cons9.isActive = true
         cons10.isActive = true
         cons11.isActive = true

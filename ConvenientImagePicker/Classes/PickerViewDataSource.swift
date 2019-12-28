@@ -73,7 +73,7 @@ extension PickerViewController: UICollectionViewDelegateFlowLayout, UICollection
     }
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let length = (screenWidth - self.intervalOfPictures * CGFloat(self.numberOfPictureInRow + 1)) / CGFloat(self.numberOfPictureInRow)
+        let length = (screenWidth() - self.intervalOfPictures * CGFloat(self.numberOfPictureInRow + 1)) / CGFloat(self.numberOfPictureInRow)
         return CGSize(width: length, height: length)
     }
 
@@ -96,17 +96,21 @@ extension PickerViewController: UICollectionViewDelegateFlowLayout, UICollection
     
     func collectionViewInit()
     {
+        if PHPhotoLibrary.authorizationStatus() != .authorized {
+            return
+        }
+        
         self.AssetsInit()
         
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         layout.minimumInteritemSpacing = self.intervalOfPictures
         layout.minimumLineSpacing = self.intervalOfPictures
-        let length = (screenWidth - self.intervalOfPictures * CGFloat(self.numberOfPictureInRow + 1)) / CGFloat(self.numberOfPictureInRow)
+        let length = (screenWidth() - self.intervalOfPictures * CGFloat(self.numberOfPictureInRow + 1)) / CGFloat(self.numberOfPictureInRow)
         layout.itemSize = CGSize(width: length, height: length)
         
-        let height = screenHeight - statusBarHeight
-        self.collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: height < 0 ? 0 : height), collectionViewLayout: layout)
+        let height = screenHeight() - statusBarHeight
+        self.collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: screenWidth(), height: height < 0 ? 0 : height), collectionViewLayout: layout)
         //self.collectionView.frame = CGRect(x: 0, y: 50, width: screenWidth, height: height < 0 ? 0 : height)
         self.collectionView.contentInset = UIEdgeInsets(top: self.titleView.bounds.height - self.intervalOfPictures, left: 0, bottom: 0, right: 0)
         self.collectionView.scrollIndicatorInsets = UIEdgeInsets(top: self.titleView.bounds.height, left: 0, bottom: 0, right: 0)
@@ -125,11 +129,17 @@ extension PickerViewController: UICollectionViewDelegateFlowLayout, UICollection
         self.mainView.addSubview(self.collectionView)
     }
     
+    func UpdateCollectionView()
+    {
+        let height = screenHeight() - statusBarHeight
+        self.collectionView.frame = CGRect(x: 0, y: 0, width: screenWidth(), height: height < 0 ? 0 : height)
+        self.MainViewMoveToCenterOp(velocity: 0, isAnimated: true)
+    }
+    
     func AssetsInit()
     {
         let allPhotosOptions = PHFetchOptions()
-        allPhotosOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate",
-            ascending: false)]
+        allPhotosOptions.sortDescriptors = [NSSortDescriptor(key: "modificationDate", ascending: false)]
         allPhotosOptions.predicate = NSPredicate(format: "mediaType = %d",
                                                  PHAssetMediaType.image.rawValue)
         assetsFetchResults = PHAsset.fetchAssets(with: PHAssetMediaType.image,
@@ -155,10 +165,16 @@ extension PickerViewController: UICollectionViewDelegateFlowLayout, UICollection
         cell.selectedImageView.alpha = self.selectedImagesIndex.contains(indexPath.item) ? 1 : 0
         cell.upper.alpha = self.selectedImagesIndex.contains(indexPath.item) ? 0.3 : 0
         
+        cell.customSelectedImage = self.customSelectedImage.image
+        cell.selectedImageHeightCons?.constant = self.customSelectedImage.height
+        cell.selectedImageTrailingCons?.constant = -1 * self.customSelectedImage.trailing
+        cell.selectedImageWidthCons?.constant = self.customSelectedImage.width
+        cell.selectedImageBottomCons?.constant = -1 * self.customSelectedImage.bottom
+        
         if self.images == nil
         {
             let asset = self.assetsFetchResults[indexPath.item]
-            let length = (screenWidth - self.intervalOfPictures * CGFloat(self.numberOfPictureInRow + 1)) / CGFloat(self.numberOfPictureInRow)
+            let length = (screenWidth() - self.intervalOfPictures * CGFloat(self.numberOfPictureInRow + 1)) / CGFloat(self.numberOfPictureInRow)
             //获取缩略图
             self.imageManager.requestImage(for: asset, targetSize: CGSize(width: length * 2, height: length * 2),
                                            contentMode: PHImageContentMode.aspectFill,
@@ -220,7 +236,7 @@ extension PickerViewController: UICollectionViewDelegateFlowLayout, UICollection
         {
             scrollView.isScrollEnabled = false
         }
-        if scrollView.contentOffset.y <= -(self.titleView.bounds.height - self.intervalOfPictures) && self.currentMainViewY == screenHeight / 2.0
+        if scrollView.contentOffset.y <= -(self.titleView.bounds.height - self.intervalOfPictures) && self.currentMainViewY == screenHeight() / 2.0
         {
             scrollView.isScrollEnabled = false
         }

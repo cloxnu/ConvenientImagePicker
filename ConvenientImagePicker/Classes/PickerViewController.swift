@@ -8,8 +8,8 @@
 import UIKit
 import Photos
 
-let screenHeight = UIScreen.main.bounds.height
-let screenWidth = UIScreen.main.bounds.width
+let screenHeight = { () -> CGFloat in return UIScreen.main.bounds.height }
+let screenWidth = { () -> CGFloat in UIScreen.main.bounds.width }
 let statusBarHeight = UIApplication.shared.statusBarFrame.height
 
 
@@ -37,7 +37,7 @@ public class PickerViewController: UIViewController {
     public var numberOfPictureInRow = 4
     /// The interval between pictures.
     public var intervalOfPictures: CGFloat = 5
-    /// A Boolean value that determines whether the title label, count view, and close button exist.
+    /// A Boolean value that determines whether the title label, count view, and close button are exist.
     public var isSimpleMode = true
     /// The displayed images, it's will be photo library if nil.
     public var images: [UIImage]?
@@ -47,6 +47,12 @@ public class PickerViewController: UIViewController {
     public var isSwitchDarkAutomately = true
     /// A set of index of selected image when the picker appears.
     public var initialSelectedIndex = Set<Int>()
+    /// A Boolean value that determines whether the appear animation is exist.
+    public var isAnimated = true
+    /// A selectedImage type value that relates to the image of selected picture.
+    public var customSelectedImage = selectedImage()
+    /// A Boolean value that determines whether the ability of landscape.
+    public var isSupportLandscape = false
     
 //    public var backgroundColor: UIColor = UIColor.white
 //    public var titleColor: UIColor = UIColor.black
@@ -55,71 +61,96 @@ public class PickerViewController: UIViewController {
 //    public var buttonTitle: String = "Done"
 //    public var countTextColor: UIColor = UIColor.white
     
+    public class selectedImage {
+        public var image: UIImage?
+        public var width: CGFloat = 20
+        public var height: CGFloat = 20
+        public var trailing: CGFloat = 10
+        public var bottom: CGFloat = 10
+        
+        public init(image: UIImage?, width: CGFloat?, height: CGFloat?, trailing: CGFloat?, bottom: CGFloat?) {
+            self.image = image
+            self.width = width ?? self.width
+            self.height = height ?? self.height
+            self.trailing = trailing ?? self.trailing
+            self.bottom = bottom ?? self.bottom
+        }
+        
+        public convenience init() {
+            self.init(image: nil, width: nil, height: nil, trailing: nil, bottom: nil)
+        }
+    }
+    
     
     let transition = PresentTransition()
     var isDesideToCancel = false
     
-    let backView = { () -> UIView in
-        let view = UIView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight))
-        view.alpha = 0
-        view.backgroundColor = UIColor.black
-        return view
-    }()
-    public let mainView = { () -> UIView in
-        let view = UIView(frame: CGRect(x: 0, y: screenHeight, width: screenWidth, height: screenHeight + 50.0))
-        view.layer.cornerRadius = 10.0
-        view.clipsToBounds = true
-        view.backgroundColor = UIColor.white
-        return view
-    }()
-    public let titleView = { () -> UIView in
-        let view = UIView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 15))
-        view.clipsToBounds = true
-        view.backgroundColor = UIColor.white
-        return view
-    }()
-    public let decorationBar = { () -> UIView in
-        let view = UIView(frame: CGRect(x: screenWidth / 2.0 - 40, y: 5, width: 80, height: 5))
-        view.clipsToBounds = true
-        view.layer.cornerRadius = 2.5
-        view.backgroundColor = UIColor.black
-        return view
-    }()
-    public let countLabel = { () -> UILabel in
-        let label = UILabel(frame: CGRect(x: 15, y: 15, width: 30, height: 30))
-        label.backgroundColor = UIColor.lightGray
-        label.textColor = UIColor.white
-        label.textAlignment = .center
-        label.font = UIFont.boldSystemFont(ofSize: 20)
-        label.text = "0"
-        label.clipsToBounds = true
-        label.layer.cornerRadius = 15
-        return label
-    }()
-    public let titleLabel = { () -> UILabel in
-        let label = UILabel(frame: CGRect(x: 60, y: 0, width: screenWidth - 150, height: 60))
-        label.textColor = UIColor.black
-        label.textAlignment = .center
-        label.font = UIFont.boldSystemFont(ofSize: 17)
-        label.text = "Please select picture"
-        label.clipsToBounds = true
-        return label
-    }()
-    public let doneButton = { () -> UIButton in
-        let button = UIButton(type: .system)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
-        button.titleLabel?.textAlignment = .right
-        button.frame = CGRect(x: screenWidth - 75, y: 0, width: 60, height: 60)
-        button.setTitle("Done", for: .normal)
-        return button
-    }()
+    var backView = UIView()
+    public var mainView = UIView()
+    public var titleView = UIView()
+    public var decorationBar = UIView()
+    public var countLabel = UILabel()
+    public var titleLabel = UILabel()
+    public var doneButton = UIButton(type: .system)
     
-    public let titleViewEffectView = { () -> UIVisualEffectView in
+    public var titleViewEffectView = UIVisualEffectView()
+    
+    func resetViewsFrame()
+    {
+        self.backView.frame = CGRect(x: 0, y: 0, width: screenWidth(), height: screenHeight())
+        self.mainView.frame = CGRect(x: 0, y: screenHeight(), width: screenWidth(), height: screenHeight() + 50.0)
+        self.titleView.frame = CGRect(x: 0, y: 0, width: screenWidth(), height: 15)
+        self.decorationBar.frame = CGRect(x: screenWidth() / 2.0 - 40, y: 5, width: 80, height: 5)
+        self.countLabel.frame = CGRect(x: 15, y: 15, width: 30, height: 30)
+        self.titleLabel.frame = CGRect(x: 60, y: 0, width: screenWidth() - 150, height: 60)
+        self.doneButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
+        self.titleViewEffectView.frame = CGRect(x: 0, y: 0, width: screenWidth(), height: 60)
+    }
+    func resetAllView()
+    {
+        self.backView.frame = CGRect(x: 0, y: 0, width: screenWidth(), height: screenHeight())
+        self.backView.alpha = 0
+        self.backView.backgroundColor = UIColor.black
+        
+        self.mainView.frame = CGRect(x: 0, y: screenHeight(), width: screenWidth(), height: screenHeight() + 50.0)
+        self.mainView.layer.cornerRadius = 10.0
+        self.mainView.clipsToBounds = true
+        self.mainView.backgroundColor = UIColor.white
+        
+        self.titleView.frame = CGRect(x: 0, y: 0, width: screenWidth(), height: 15)
+        self.titleView.clipsToBounds = true
+        self.titleView.backgroundColor = UIColor.white
+        
+        self.decorationBar.frame = CGRect(x: screenWidth() / 2.0 - 40, y: 5, width: 80, height: 5)
+        self.decorationBar.clipsToBounds = true
+        self.decorationBar.layer.cornerRadius = 2.5
+        self.decorationBar.backgroundColor = UIColor.black
+        
+        self.countLabel.frame = CGRect(x: 15, y: 15, width: 30, height: 30)
+        self.countLabel.backgroundColor = UIColor.lightGray
+        self.countLabel.textColor = UIColor.white
+        self.countLabel.textAlignment = .center
+        self.countLabel.font = UIFont.boldSystemFont(ofSize: 20)
+        self.countLabel.text = "0"
+        self.countLabel.clipsToBounds = true
+        self.countLabel.layer.cornerRadius = 15
+        
+        self.titleLabel.frame = CGRect(x: 60, y: 0, width: screenWidth() - 150, height: 60)
+        self.titleLabel.textColor = UIColor.black
+        self.titleLabel.textAlignment = .center
+        self.titleLabel.font = UIFont.boldSystemFont(ofSize: 17)
+        self.titleLabel.text = "Please select picture"
+        self.titleLabel.clipsToBounds = true
+        
+        self.doneButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
+        self.doneButton.titleLabel?.textAlignment = .right
+        self.doneButton.frame = CGRect(x: screenWidth() - 75, y: 0, width: 60, height: 60)
+        self.doneButton.setTitle("Done", for: .normal)
+        
+        self.titleViewEffectView.frame = CGRect(x: 0, y: 0, width: screenWidth(), height: 60)
         let blur = UIBlurEffect(style: .extraLight)
-        let effectview = UIVisualEffectView(effect: blur)
-        effectview.frame = CGRect(x: 0, y: 0, width: screenWidth, height: 60)
-        return effectview
-    }()
+        self.titleViewEffectView.effect = blur
+    }
     
     public var collectionView : UICollectionView!
     var imagesResource = [UIImage]()
@@ -154,11 +185,14 @@ public class PickerViewController: UIViewController {
     
     override public func viewDidLoad() {
         super.viewDidLoad()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.screenHasRotation), name: .UIDeviceOrientationDidChange, object: nil)
+        
         self.view.addSubview(self.backView)
         self.view.addSubview(self.mainView)
         
         self.selectedImagesIndex = self.initialSelectedIndex
-        self.titleView.frame = CGRect(x: 0, y: 0, width: screenWidth, height: self.isSimpleMode ? 15 : 60)
+        self.titleView.frame = CGRect(x: 0, y: 0, width: screenWidth(), height: self.isSimpleMode ? 15 : 60)
         
         self.PangestureInit()
         self.OtherViewInit()
@@ -171,7 +205,7 @@ public class PickerViewController: UIViewController {
 
         self.isDarkMode = self.isSystemDarkMode(traitCollection: self.traitCollection)
         self.UpdateDarkMode()
-        self.MainViewMoveToCenterOp(velocity: 0)
+        self.MainViewMoveToCenterOp(velocity: 0, isAnimated: self.isAnimated)
     }
     
     public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -190,6 +224,39 @@ public class PickerViewController: UIViewController {
         }
     }
     
+    var currentRotation = { () -> UIDeviceOrientation in
+        switch UIDevice.current.orientation
+        {
+        case .landscapeLeft:
+            return .landscapeLeft
+        case .landscapeRight:
+            return .landscapeRight
+        default:
+            return .portrait
+        }
+        
+    }()
+    @objc func screenHasRotation()
+    {
+        if !self.isSupportLandscape
+        {
+            return
+        }
+        let ori = UIDevice.current.orientation
+        if ori != .landscapeLeft && ori != .landscapeRight && ori != .portrait
+        {
+            return
+        }
+        if ori != currentRotation
+        {
+            self.currentRotation = UIDevice.current.orientation
+            self.resetViewsFrame()
+            self.titleView.frame = CGRect(x: 0, y: 0, width: screenWidth(), height: self.isSimpleMode ? 15 : 60)
+            
+            self.UpdateCollectionView()
+        }
+    }
+    
     let BackgroundAlpha: CGFloat = 0.5
     
     func configure()
@@ -197,22 +264,32 @@ public class PickerViewController: UIViewController {
         self.modalPresentationStyle = .custom
         self.modalTransitionStyle = .coverVertical
         self.transitioningDelegate = self.transition
+        self.resetAllView()
     }
     
     
     
     // MARK: - MainViewMoveOp
     
-    var currentMainViewY = screenHeight
-    func MainViewMoveToCenterOp(velocity: CGFloat)
+    var currentMainViewY = screenHeight()
+    func MainViewMoveToCenterOp(velocity: CGFloat, isAnimated: Bool)
     {
-        let distination = screenHeight / 2.0
+        let distination = screenHeight() / 2.0
         let v = velocity / abs(distination - self.currentMainViewY) //Conversion unit
         self.currentMainViewY = distination
-        UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: v, options: [.allowUserInteraction, .curveEaseInOut], animations: {
-            self.mainView.frame = CGRect(x: 0, y: screenHeight / 2.0, width: screenWidth, height: screenHeight + 50.0)
+        
+        if isAnimated
+        {
+            UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: v, options: [.allowUserInteraction, .curveEaseInOut], animations: {
+                self.mainView.frame = CGRect(x: 0, y: screenHeight() / 2.0, width: screenWidth(), height: screenHeight() + 50.0)
+                self.backView.alpha = self.BackgroundAlpha
+            }, completion: nil)
+        }
+        else
+        {
+            self.mainView.frame = CGRect(x: 0, y: screenHeight() / 2.0, width: screenWidth(), height: screenHeight() + 50.0)
             self.backView.alpha = self.BackgroundAlpha
-        }, completion: nil)
+        }
     }
     
     func MainViewMoveToTopOp(velocity: CGFloat)
@@ -222,7 +299,7 @@ public class PickerViewController: UIViewController {
         self.currentMainViewY = distination
         self.collectionView.isScrollEnabled = true
         UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: v, options: [.allowUserInteraction, .curveEaseInOut], animations: {
-            self.mainView.frame = CGRect(x: 0, y: statusBarHeight, width: screenWidth, height: screenHeight + 50.0)
+            self.mainView.frame = CGRect(x: 0, y: statusBarHeight, width: screenWidth(), height: screenHeight() + 50.0)
             self.backView.alpha = self.BackgroundAlpha
         }, completion: nil)
     }
@@ -234,11 +311,11 @@ public class PickerViewController: UIViewController {
             return
         }
         self.isDesideToCancel = true
-        let distination = screenHeight
+        let distination = screenHeight()
         let v = velocity / abs(distination - self.currentMainViewY) //Conversion unit
         self.currentMainViewY = distination
         UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: v, options: [.allowUserInteraction, .curveEaseInOut], animations: {
-            self.mainView.frame = CGRect(x: 0, y: screenHeight, width: screenWidth, height: screenHeight + 50.0)
+            self.mainView.frame = CGRect(x: 0, y: screenHeight(), width: screenWidth(), height: screenHeight() + 50.0)
             self.backView.alpha = 0
         }) { (true) in
             var selectedImages = [Int : UIImage]()
@@ -253,21 +330,21 @@ public class PickerViewController: UIViewController {
     
     func MainViewMoveOp()
     {
-        self.mainView.frame = CGRect(x: 0, y: self.currentMainViewY, width: screenWidth, height: screenHeight + 50.0)
+        self.mainView.frame = CGRect(x: 0, y: self.currentMainViewY, width: screenWidth(), height: screenHeight() + 50.0)
         self.backView.alpha = self.CalculateForBackgroundAlpha(Y: self.currentMainViewY)
 //        UIView.animate(withDuration: 0.1, delay: 0, options: [.allowUserInteraction, .curveEaseInOut], animations: {
-//            self.mainView.frame = CGRect(x: 0, y: self.currentMainViewY, width: screenWidth, height: screenHeight + 50.0)
+//            self.mainView.frame = CGRect(x: 0, y: self.currentMainViewY, width: screenWidth(), height: screenHeight() + 50.0)
 //            self.backView.backgroundColor = UIColor.init(white: 0, alpha: self.CalculateForBackgroundAlpha(Y: self.currentMainViewY))
 //        }, completion: nil)
     }
     
     func CalculateForBackgroundAlpha(Y: CGFloat) -> CGFloat
     {
-        if Y >= screenHeight / 2.0 && Y <= screenHeight
+        if Y >= screenHeight() / 2.0 && Y <= screenHeight()
         {
-            return (1.0 - (Y - screenHeight / 2.0) / (screenHeight / 2.0)) * self.BackgroundAlpha
+            return (1.0 - (Y - screenHeight() / 2.0) / (screenHeight() / 2.0)) * self.BackgroundAlpha
         }
-        else if Y > screenHeight
+        else if Y > screenHeight()
         {
             return 0
         }
@@ -283,37 +360,37 @@ public class PickerViewController: UIViewController {
         
         switch self.currentMainViewY
         {
-        case ..<((screenHeight / 2.0 - statusBarHeight) / 2.0):
+        case ..<((screenHeight() / 2.0 - statusBarHeight) / 2.0):
             if velocityY >= vFast
             {
-                self.MainViewMoveToCenterOp(velocity: abs(velocityY))
+                self.MainViewMoveToCenterOp(velocity: abs(velocityY), isAnimated: true)
             }
             else
             {
                 self.MainViewMoveToTopOp(velocity: abs(velocityY))
             }
-        case ((screenHeight / 2.0 - statusBarHeight) / 2.0) ... screenHeight / 2.0:
+        case ((screenHeight() / 2.0 - statusBarHeight) / 2.0) ... screenHeight() / 2.0:
             if velocityY <= -vFast
             {
                 self.MainViewMoveToTopOp(velocity: abs(velocityY))
             }
             else
             {
-                self.MainViewMoveToCenterOp(velocity: abs(velocityY))
+                self.MainViewMoveToCenterOp(velocity: abs(velocityY), isAnimated: true)
             }
-        case screenHeight / 2.0 ... screenHeight * 3.0 / 4.0:
+        case screenHeight() / 2.0 ... screenHeight() * 3.0 / 4.0:
             if velocityY >= vFast
             {
                 self.MainViewCancelOp(velocity: abs(velocityY))
             }
             else
             {
-                self.MainViewMoveToCenterOp(velocity: abs(velocityY))
+                self.MainViewMoveToCenterOp(velocity: abs(velocityY), isAnimated: true)
             }
         default:
             if velocityY <= -vFast
             {
-                self.MainViewMoveToCenterOp(velocity: abs(velocityY))
+                self.MainViewMoveToCenterOp(velocity: abs(velocityY), isAnimated: true)
             }
             else
             {

@@ -42,12 +42,14 @@ class ViewController: UIViewController, ConvenientImagePickerDelegate {
     func imageDidDeselect(_ imagePicker: PickerViewController, index: Int, image: UIImage?){}
     func imageSelectMax(_ imagePicker: PickerViewController, wantToSelectIndex: Int, wantToSelectImage: UIImage?) {}
     
+    let pickerViewController = PickerViewController()
     @objc func buttonUpInside(_ button : UIButton)
     {
-        let pickerViewController = PickerViewController()
+        
         pickerViewController.maxNumberOfSelectedImage = 15
         pickerViewController.delegate = self
         pickerViewController.initialSelectedIndex = [0,1,2,3,4]
+        pickerViewController.isSupportLandscape = true
         
         //pickerViewController.allowMultipleSelection = false
         //pickerViewController.images = [UIImage()]
