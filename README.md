@@ -14,7 +14,7 @@
 
 ## Release Notes
 
-the newest version is 0.1.2, `func imageSelectMax(_:, wantToSelectIndex:, wantToSelectImage:)` has been renamed. More information see [Release Notes](ReleaseNotes.md)
+the newest version is 0.2, Add new property `isAnimated`, `customSelectedImage`, `isSupportLandscape`, and so on. More information see [Release Notes](ReleaseNotes.md)
 
 ## Overview
 
@@ -61,6 +61,7 @@ Well, the most simplest version is add the following code in this function:
 ```swift
 let pickerViewController = PickerViewController()
 pickerViewController.delegate = self
+pickerViewController.isSupportLandscape = true // A Boolean value that determines whether the ability of landscape exists.
 self.present(pickerViewController, animated: true, completion: nil)
 ```
 
@@ -107,6 +108,9 @@ pickerViewController.images = nil // The displayed images, it's will be photo li
 pickerViewController.isDarkMode = false // A Boolean value that determines whether darkmode enable.
 pickerViewController.isSwitchDarkAutomately = true // A Boolean value that determines whether darkmode can switched automately. (only iOS 13 valid)
 pickerViewController.initialSelectedIndex = [0,1,2,3,4] // A set of index of selected image when the picker appears.
+pickerViewController.isAnimated = true // A Boolean value that determines whether the appear animation exists.
+pickerViewController.customSelectedImage // A selectedImage type value that relates to the image of selected picture.
+pickerViewController.isSupportLandscape = true // A Boolean value that determines whether the ability of landscape exists.
 ```
 
 ### when 'isSimpleMode = false'
