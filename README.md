@@ -14,7 +14,7 @@
 
 ## Release Notes
 
-the newest version is 0.2, Add new property `isAnimated`, `customSelectedImage`, `isSupportLandscape`, and so on. More information see [Release Notes](ReleaseNotes.md)
+the newest version is 0.2.1, fixed album permission issues. More information see [Release Notes](ReleaseNotes.md)
 
 ## Overview
 
