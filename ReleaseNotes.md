@@ -1,3 +1,9 @@
+# 0.2.1 Release Notes
+
+2019-12-30 Update
+
+* Fixed album permission issues.
+
 # 0.2 Release Notes
 
 2019-12-28 Update

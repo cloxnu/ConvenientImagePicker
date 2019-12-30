@@ -96,10 +96,6 @@ extension PickerViewController: UICollectionViewDelegateFlowLayout, UICollection
     
     func collectionViewInit()
     {
-        if PHPhotoLibrary.authorizationStatus() != .authorized {
-            return
-        }
-        
         self.AssetsInit()
         
         let layout = UICollectionViewFlowLayout()
