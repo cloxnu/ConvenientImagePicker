@@ -14,7 +14,7 @@
 
 ## Release Notes
 
-the newest version is 0.2.1, fixed album permission issues. More information see [Release Notes](ReleaseNotes.md)
+the newest version is 0.2.2, Add `assetsSortKey` and `assetsSortAscending` property, the order of pictures is now customizable! thanks for @Édouard. More information see [Release Notes](ReleaseNotes.md)
 
 ## Overview
 
@@ -111,6 +111,8 @@ pickerViewController.initialSelectedIndex = [0,1,2,3,4] // A set of index of sel
 pickerViewController.isAnimated = true // A Boolean value that determines whether the appear animation exists.
 pickerViewController.customSelectedImage // A selectedImage type value that relates to the image of selected picture.
 pickerViewController.isSupportLandscape = true // A Boolean value that determines whether the ability of landscape exists.
+pickerViewController.assetsSortKey = "modificationDate" // A String value that determines whether the order key of all assets.
+pickerViewController.assetsSortAscending = false // A Boolean value that determines whether the order way of all assets.
 ```
 
 ### when 'isSimpleMode = false'
