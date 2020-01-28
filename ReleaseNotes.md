@@ -1,3 +1,9 @@
+# 0.2.2 Release Notes
+
+2020-01-28 Update
+
+* Add `assetsSortKey` and `assetsSortAscending` property, the order of pictures is now customizable! thanks for @Édouard.
+
 # 0.2.1 Release Notes
 
 2019-12-30 Update

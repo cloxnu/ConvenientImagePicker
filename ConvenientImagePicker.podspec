@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'ConvenientImagePicker'
-  s.version          = '0.2.1'
+  s.version          = '0.2.2'
   s.summary          = 'A beautiful iOS Image Picker.'
   s.swift_version    = '4.0'
 
