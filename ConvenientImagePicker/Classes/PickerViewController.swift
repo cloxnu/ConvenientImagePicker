@@ -53,7 +53,11 @@ public class PickerViewController: UIViewController {
     public var customSelectedImage = selectedImage()
     /// A Boolean value that determines whether the ability of landscape.
     public var isSupportLandscape = false
-    
+    /// A String value that determines whether the order key of all assets.
+    public var assetsSortKey = "modificationDate"
+    /// A Boolean value that determines whether the order way of all assets.
+    public var assetsSortAscending = false
+
 //    public var backgroundColor: UIColor = UIColor.white
 //    public var titleColor: UIColor = UIColor.black
 //    public var titleText: String = "Please select picture"

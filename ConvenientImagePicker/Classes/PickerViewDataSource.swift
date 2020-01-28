@@ -135,7 +135,7 @@ extension PickerViewController: UICollectionViewDelegateFlowLayout, UICollection
     func AssetsInit()
     {
         let allPhotosOptions = PHFetchOptions()
-        allPhotosOptions.sortDescriptors = [NSSortDescriptor(key: "modificationDate", ascending: false)]
+        allPhotosOptions.sortDescriptors = [NSSortDescriptor(key: self.assetsSortKey, ascending: self.assetsSortAscending)]
         allPhotosOptions.predicate = NSPredicate(format: "mediaType = %d",
                                                  PHAssetMediaType.image.rawValue)
         assetsFetchResults = PHAsset.fetchAssets(with: PHAssetMediaType.image,
