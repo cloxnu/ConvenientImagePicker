@@ -73,7 +73,7 @@ And implement these delegate function:
 func imagePickerDidCancel(_ selectedImages: [Int : UIImage])
 func imageDidSelect(_ imagePicker: PickerViewController, index: Int, image: UIImage?)
 func imageDidDeselect(_ imagePicker: PickerViewController, index: Int, image: UIImage?)
-func imageSelectMax(_ imagePicker: PickerViewController, wangToSelectIndex: Int, wangToSelectImage: UIImage?)
+func imageSelectMax(_ imagePicker: PickerViewController, wantToSelectIndex: Int, wantToSelectImage: UIImage?)
 ```
 
 ```imagePickerDidCancel``` will inform you that user has cancelled the image picker, and return the images user has selected.
