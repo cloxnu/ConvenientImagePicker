@@ -14,7 +14,7 @@
 
 ## Release Notes
 
-the newest version is 0.2.2, Add `assetsSortKey` and `assetsSortAscending` property, the order of pictures is now customizable! thanks for @Édouard. More information see [Release Notes](ReleaseNotes.md)
+the newest version is 0.2.2, Add `assetsSortKey` and `assetsSortAscending` property, the order of pictures is now customizable! thanks for @Édouard. More information see [Release Notes](ReleaseNotes.md).
 
 ## Overview
 
@@ -96,7 +96,7 @@ So far, this is the simplest usage of this pod.
 
 Sure, You can use more features of the image picker, or even customize it, instead of just using the default configuration.
 
-Do start from ```let pickerViewController = PickerViewController()``` there:
+Start with ```let pickerViewController = PickerViewController()``` :
 
 ```swift
 pickerViewController.maxNumberOfSelectedImage = 50 // The maximum number of pictures allowed.
