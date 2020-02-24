@@ -5,6 +5,7 @@
 **ConvenientImagePicker** is a beautiful and simple image picker solution for iOS development written on Swift. It's a view controller that can simply present it everywhere. Excellent interaction, Mutiple selection, Photo picker, Dark mode, and so on.
 
 [![Starkidstory](Documentation/starkidstory_badge.png)](https://starkidstory.com)
+[![Convenient](Documentation/convenient_badge.png)](https://github.com/CLOXnu/ConvenientImagePicker)
 [![Version](https://img.shields.io/cocoapods/v/ConvenientImagePicker.svg?style=flat)](https://cocoapods.org/pods/ConvenientImagePicker)
 [![License](https://img.shields.io/cocoapods/l/ConvenientImagePicker.svg?style=flat)](https://cocoapods.org/pods/ConvenientImagePicker)
 [![Platform](https://img.shields.io/cocoapods/p/ConvenientImagePicker.svg?style=flat)](https://cocoapods.org/pods/ConvenientImagePicker)
