@@ -5,18 +5,16 @@
 **ConvenientImagePicker** is a beautiful and simple image picker solution for iOS development written on Swift. It's a view controller that can simply present it everywhere. Excellent interaction, Mutiple selection, Photo picker, Dark mode, and so on.
 
 <p align="center">
-  
-  <a href="https://starkidstory.com"><img src="Documentation/starkidstory_badge.png"></a>
-  <a href="https://github.com/CLOXnu/ConvenientImagePicker"><img src="Documentation/convenient_badge.png"/></a>
-  <br/>
-  <a href="https://cocoapods.org/pods/ConvenientImagePicker"><img src="https://img.shields.io/cocoapods/v/ConvenientImagePicker.svg?style=flat"/></a>
-  <a href="https://cocoapods.org/pods/ConvenientImagePicker"><img src="https://img.shields.io/cocoapods/l/ConvenientImagePicker.svg?style=flat"/></a>
-  <a href="https://cocoapods.org/pods/ConvenientImagePicker"><img src="https://img.shields.io/cocoapods/p/ConvenientImagePicker.svg?style=flat"/></a>
-  <img src="https://img.shields.io/badge/Xcode-9.0%2B-blue.svg"/>
-  <img src="https://img.shields.io/badge/iOS-8.0%2B-blue.svg"/>
-  <img src="https://img.shields.io/badge/Swift-4.0%2B-orange.svg"/>
-  <a href="https://github.com/CLOXnu/ConvenientImagePicker/blob/master/README.zh-cn.md"><img src="https://img.shields.io/badge/%E4%B8%AD%E6%96%87-README-blue.svg?style=flat"/></a>
-  
+<a href="https://starkidstory.com"><img src="Documentation/starkidstory_badge.png"></a>
+<a href="https://github.com/CLOXnu/ConvenientImagePicker"><img src="Documentation/convenient_badge.png"/></a>
+<br/>
+<a href="https://cocoapods.org/pods/ConvenientImagePicker"><img src="https://img.shields.io/cocoapods/v/ConvenientImagePicker.svg?style=flat"/></a>
+<a href="https://cocoapods.org/pods/ConvenientImagePicker"><img src="https://img.shields.io/cocoapods/l/ConvenientImagePicker.svg?style=flat"/></a>
+<a href="https://cocoapods.org/pods/ConvenientImagePicker"><img src="https://img.shields.io/cocoapods/p/ConvenientImagePicker.svg?style=flat"/></a>
+<img src="https://img.shields.io/badge/Xcode-9.0%2B-blue.svg"/>
+<img src="https://img.shields.io/badge/iOS-8.0%2B-blue.svg"/>
+<img src="https://img.shields.io/badge/Swift-4.0%2B-orange.svg"/>
+<a href="https://github.com/CLOXnu/ConvenientImagePicker/blob/master/README.zh-cn.md"><img src="https://img.shields.io/badge/%E4%B8%AD%E6%96%87-README-blue.svg?style=flat"/></a>
 </p>
 
 ## Release Notes
