@@ -48,8 +48,8 @@
       }
     </style>
   </defs>
-  <path id="圆角矩形_1" data-name="圆角矩形 1" class="cls-1" d="M18,0H200a0,0,0,0,1,0,0V100a0,0,0,0,1,0,0H18A18,18,0,0,1,0,82V18A18,18,0,0,1,18,0Z"/>
-  <path id="圆角矩形_1_拷贝" data-name="圆角矩形 1 拷贝" class="cls-2" d="M200,0H582a18,18,0,0,1,18,18V82a18,18,0,0,1-18,18H200a0,0,0,0,1,0,0V0A0,0,0,0,1,200,0Z"/>
+  <path id="圆角矩形_1" data-name="圆角矩形 1" class="cls-1" d="M24,0H200a0,0,0,0,1,0,0V100a0,0,0,0,1,0,0H24A24,24,0,0,1,0,76V24A24,24,0,0,1,24,0Z"/>
+  <path id="圆角矩形_1_拷贝" data-name="圆角矩形 1 拷贝" class="cls-2" d="M200,0H576a24,24,0,0,1,24,24V76a24,24,0,0,1-24,24H200a0,0,0,0,1,0,0V0A0,0,0,0,1,200,0Z"/>
   <image id="矢量智能对象" x="68" y="13" width="65" height="74" xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAAPCAYAAAA/I0V3AAACVUlEQVQokW2SX0hTURzHv79z/6xpV6f3Vg+K9kcy7CEIkiATKkokKysLyXqpMAWhsAiyF6HICCIikIrMB3MoaJMgqCgoIdIIiV5GIpWmOLYh7k+z3Xt3TmxsQ8Lv2+F3Pr/Pge8hpHP8VrSOa/ySZaDKNrhiGZg0DdFrunB/XCuIY1lS0NGbUY86T/UJXYDrYsY2xBdL58wysMM0xGxcx4FxrSCcweRDDyJtjjFWD4JP4mghjhfPL2oiOax9GWJIoIE4OgG0ZyBquBr1KT6miQS2DfTnTGGF7P+0WGHp+P1+syuSMjlmaG2sMuHxtGtZ4MfWRwWqyo6rKitXcoUpP+n7IJcteZ3pOZPigsI1fCkDeMseNguBNxDiNISoExZ1wKbXsOizNXhjY+p5Jy9Hov62hL0qwNbfbezPJYa8iqlWb2bJwq6n5XLp33tyWayWlcR/hn85djOziL8VhHxIeNzRfca3HEim8OPZ77BwUJjkZhI22AtyH7N00QzCpCCc4AwjDe4/pcuh88cihVd8TYxsaoEJv+1XdqZ6qp5dLHIGaEANSlVqkLgSYGNygE8rfp7DgnjWM6wNJe/Fbt/pnhspbJWTh9Fi11zN11A1CFUg7AVDLgheweDpGdYWM9bIt3wXyUJkv5GYuZZcsIZKuuZX6sp/2L0lvmRPiNWxCMu2XNJlA7ggpq7v+x8InRo6AkajBDgdhtWZNaVt+bDoFcKKi/ucE3w6jxJevdIMSpviMQtcjbnXDZ5ryprSthAIeyCJXlL4dki8EWqimIjeEVFNEgCAf4l19ZyRQFvJAAAAAElFTkSuQmCC"/>
   <text id="Starkid_Story" data-name="Starkid Story" class="cls-3" transform="translate(401.096 74.62) scale(2.175)"><tspan x="0">Starkid Story</tspan></text>
 </svg>
