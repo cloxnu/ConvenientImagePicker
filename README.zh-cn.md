@@ -4,13 +4,18 @@
 # ConvenientImagePicker
 **ConvenientImagePicker** 基于 Swift 语言开发，是一个用于 iOS 开发、简洁优美的图像选择器解决方案。它能让你轻松地在任何 `ViewController` 中呈现。它有出色的手势交互、近乎完美的视觉体验，并支持 iOS 13 深色模式。
 
-[![Version](https://img.shields.io/cocoapods/v/ConvenientImagePicker.svg?style=flat)](https://cocoapods.org/pods/ConvenientImagePicker)
-[![License](https://img.shields.io/cocoapods/l/ConvenientImagePicker.svg?style=flat)](https://cocoapods.org/pods/ConvenientImagePicker)
-[![Platform](https://img.shields.io/cocoapods/p/ConvenientImagePicker.svg?style=flat)](https://cocoapods.org/pods/ConvenientImagePicker)
-![Xcode 9.0+](https://img.shields.io/badge/Xcode-9.0%2B-blue.svg)
-![iOS 8.0+](https://img.shields.io/badge/iOS-8.0%2B-blue.svg)
-![Swift 4.0+](https://img.shields.io/badge/Swift-4.0%2B-orange.svg)
-[![中文 README](https://img.shields.io/badge/%E4%B8%AD%E6%96%87-README-blue.svg?style=flat)](https://github.com/CLOXnu/ConvenientImagePicker/blob/master/README.zh-cn.md)
+<p align="center">
+<a href="https://starkidstory.com"><img src="Documentation/starkidstorylogo_badge.png" height=20></a>
+<a href="https://github.com/CLOXnu/ConvenientImagePicker"><img src="Documentation/convenientlogo_badge.png" height=20/></a>
+<br/>
+<a href="https://cocoapods.org/pods/ConvenientImagePicker"><img src="https://img.shields.io/cocoapods/v/ConvenientImagePicker.svg?style=flat"/></a>
+<a href="https://cocoapods.org/pods/ConvenientImagePicker"><img src="https://img.shields.io/cocoapods/l/ConvenientImagePicker.svg?style=flat"/></a>
+<a href="https://cocoapods.org/pods/ConvenientImagePicker"><img src="https://img.shields.io/cocoapods/p/ConvenientImagePicker.svg?style=flat"/></a>
+<img src="https://img.shields.io/badge/Xcode-9.0%2B-blue.svg"/>
+<img src="https://img.shields.io/badge/iOS-8.0%2B-blue.svg"/>
+<img src="https://img.shields.io/badge/Swift-4.0%2B-orange.svg"/>
+<a href="https://github.com/CLOXnu/ConvenientImagePicker/blob/master/README.zh-cn.md"><img src="https://img.shields.io/badge/%E4%B8%AD%E6%96%87-README-blue.svg?style=flat"/></a>
+</p>
 
 ## Release Notes
 
